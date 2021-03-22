@@ -17,6 +17,7 @@ jobs:
     - name: Checkout master
       uses: actions/checkout@v2
       with:
+        token: ${{ secrets.ACTIONS_TOKEN }}
         ref: master
         submodules: 'recursive'     ### may be needed in your situation
 
@@ -31,7 +32,7 @@ jobs:
         git_pull_args: --ff-only                    # optional arg use, defaults to simple 'pull'
         git_checkout_args: --recurse-submodules
         git_fetch_args: --recurse-submodules
-        github_token: ${{ secrets.GITHUB_TOKEN }}   # optional, for accessing repos that require authentication
+        github_token: $${{ secrets.ACTIONS_TOKEN }}  # optional, for accessing repos that require authentication
 
     # Step 3: Display a message if 'sync' step had new commits (simple test)
     - name: Check for new commits
